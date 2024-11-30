@@ -5,6 +5,13 @@
     font-style: normal;
   }
 
+  @font-face {
+    font-family: 'bubble2';
+    src: url('milky.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   * {
     font-family: 'bubble', sans-serif; /* Use your custom font globally */
   }
@@ -407,6 +414,7 @@ body {
     width: 100%; /* Make the textbox responsive */
     max-width: 350px; /* Max width for larger screens */
     margin-bottom: 3vh;
+    font-family: 'bubble2';
 }
 
 /* Hover effect - zoom in and add shadow */
