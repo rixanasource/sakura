@@ -32,6 +32,13 @@ body {
     width: 200px; /* You can adjust this based on your design */
   }
 
+  .logo-anya {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    margin-bottom: 3vh;
+  }
+
   /* For smaller screens (mobile devices) */
   @media screen and (max-width: 768px) {
     .logo {
