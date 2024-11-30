@@ -367,7 +367,7 @@ body {
     background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
     padding: 1%; /* Optional padding to give space around the text */
     border-radius: 8px; /* Optional rounded corners */
-
+    margin-top: 10vh;
 }
 
 .container p {
