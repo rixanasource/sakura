@@ -37,13 +37,61 @@ body {
     max-width: 100%;
     height: auto;
     width: 200px; /* You can adjust this based on your design */
+    animation: spin 2s linear infinite;
   }
+
+  @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    }
+
+    @keyframes smoothBounceZoom {
+        0% {
+            transform: scale(0.8) translateY(0); /* Start smaller */
+            opacity: 0.8; /* Slightly faded at start */
+        }
+        20% {
+            transform: scale(1.2) translateY(-20px); /* Zoom larger and rise */
+            opacity: 1; /* Fully visible */
+        }
+        40% {
+            transform: scale(1) translateY(10px); /* Slight rebound downward */
+            opacity: 1;
+        }
+        60% {
+            transform: scale(1.1) translateY(-10px); /* Gentle bounce up */
+            opacity: 1;
+        }
+        80% {
+            transform: scale(1) translateY(5px); /* Settle down slightly */
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1) translateY(0); /* Final stable position */
+            opacity: 1; /* Fully visible */
+        }
+    }
+
 
   .logo-anya {
     max-width: 100%;
     height: auto;
     width: 200px;
     margin-bottom: 3vh;
+    animation: smoothBounceZoom 2.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
+
+
+  .logo-sakura {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    margin-bottom: 3vh;
+    animation: neonGlow 3s ease-in-out infinite;
   }
 
   /* For smaller screens (mobile devices) */
@@ -97,6 +145,15 @@ body {
     margin: 1rem 0;
     letter-spacing: 0.05em;
     color: #C000C0;
+    text-shadow:
+    0 0 7px #ff00ae,
+    0 0 10px #ff00ae,
+    0 0 21px #ff00ae,
+    0 0 42px rgb(154, 85, 98),
+    0 0 82px rgb(243, 70, 197),
+    0 0 92px rgb(243, 70, 197),
+    0 0 102px rgb(243, 70, 197),
+    0 0 151px rgb(243, 70, 197);
 }
 
 .loading h1 span {
@@ -207,7 +264,7 @@ body {
     }
 }
 
-/* Anime-style loading bar */
+/* Anime-style neon loading bar */
 .loading-bar {
     width: 30%;
     height: 10px;
@@ -215,6 +272,8 @@ body {
     border-radius: 5px;
     margin-top: 20px;
     position: relative;
+    overflow: hidden; /* Ensures the glowing bar stays within bounds */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5); /* Subtle glow for the bar */
 }
 
 .loading-bar-inner {
@@ -223,20 +282,25 @@ body {
     background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
     border-radius: 5px;
     animation: loading 3s ease-in-out infinite;
+    box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4; /* Neon glow for the inner bar */
 }
 
 /* Animation for loading bar */
 @keyframes loading {
     0% {
         width: 0;
+        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4; /* Initial neon glow */
     }
     50% {
         width: 50%;
+        box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493, 0 0 40px #ff69b4; /* Intensified glow */
     }
     100% {
         width: 100%;
+        box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4; /* Return to original glow */
     }
 }
+
 
 
 @keyframes fade-in {
@@ -272,27 +336,6 @@ body {
         padding: 0 10px; /* Added padding for better readability */
     }
 }
-
-/* Media query for mobile devices */
-@media (max-width: 600px) {
-    .social-link {
-        padding: 8px 15px; /* Smaller padding on mobile */
-        font-size: 14px; /* Slightly smaller font size */
-        display: inline-block; /* Keep them inline, not block-level */
-        margin: 5px; /* Adjust margin for better spacing */
-    }
-
-    .social-link + .social-link {
-        margin-left: 8px; /* Adjust space between links */
-    }
-
-    /* Stack social links vertically on mobile if needed */
-    p {
-        display: block;
-        text-align: center; /* Center align the text and links */
-    }
-}
-
 
 .header-bar {
     display: none;
