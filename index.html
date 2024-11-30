@@ -5,15 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
 </head>
 <body>
+    <!-- header -->
+    <header class="header-bar">
+        <div class="icon">
+            <a href="" target="_blank">  <i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="icon">
+            <i class="fa-brands fa-telegram"></i>
+        </div>
+        <div class="icon">
+            <i class="fa-solid fa-capsules"></i>
+        </div>
+        <div class="icon">
+            <i class="fa-solid fa-headphones"></i>
+        </div>
+        <div class="icon">
+            <i class="fa-solid fa-person-dress"></i>
+        </div>
+      </header>
     <!-- Loading Screen -->
     <div class="loading">
-        <img src="assets/logo.png" alt="Logo" id="logo">
         <h1>
             <span>S</span><span>a</span><span>k</span><span>u</span><span>r</span><span>a</span>
-            <span>G</span><span>a</span><span>l</span><span>l</span><span>e</span><span>r</span><span>y</span>
         </h1>
         <div class="loading-bar">
             <div class="loading-bar-inner"></div>
@@ -22,28 +39,41 @@
 
     <!-- Main Content -->
     <div class="content">
-        <h1>Sakura Gallery</h1>
-        <p>Welcome to the Sakura Gallery. Reach me!
-            <a class="social-link" href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
-            <a class="social-link" href="https://t.me/KweenEth" target="_blank">Telegram</a>
-        </p>
-        <div class="image-gallery">
-            <img src="assets/gif1.gif" alt="GIF 1" class="gallery-image">
-            <img src="assets/gif2.gif" alt="GIF 2" class="gallery-image">
+        <div class="background-1">
+            <img class="logo" src="css/logo.png" />
+            <div class="container">
+                <p>
+                    The sakura teaches us that even in our brief moments, there is grace, beauty, and a chance to shine.
+                 </p>
+            </div>
+
+            <img class="logo" src="css/sakura-logo.png" />
+
+            <div class="container-cute">
+                <input type="text" class="cute-textbox" value="Hello, world!">
+            </div>
         </div>
+        <div class="background-2">
+            <div class="container-cute">
+                <h1>TOKENOMICS</h1>
+                    <input type="text" class="cute-textbox" value="Hello, world!">
+                    <input type="text" class="cute-textbox" value="Hello, world!">
+                    <input type="text" class="cute-textbox" value="Hello, world!">
+                    <input type="text" class="cute-textbox" value="Hello, world!">
+            </div>
+
+            <footer>
+                Powered By&nbsp;<a href="" target="_blank">Rixana X Green Art</a>
+            </footer>
+        </div>
+
     </div>
-
-    <!-- Fullscreen Zoomed Image (Initially hidden) -->
-    <img src="" alt="Zoomed Image" class="zoomed-image" id="zoomedImage">
-
-    <footer>
-        Powered By Green Art
-    </footer>
 
     <script>
         $(window).on('load', function() {
             const $loadingScreen = $('.loading');
             const $content = $('.content');
+            const $header = $('.header-bar');
             const $letters = $('.loading h1 span');
             const $logo = $('#logo');
 
@@ -63,32 +93,15 @@
             // Hide loading screen and show content after all animations
             setTimeout(function() {
                 $loadingScreen.hide();
-                $content.show();
+                $content.show().css('display', 'flex');
+                $header.show().css('display', 'flex');
             }, $letters.length * 300 + 2500);
         });
 
-        // Zoom image functionality
-        const $images = $('.gallery-image');
-        const $zoomedImage = $('#zoomedImage');
-        const $loadingScreen = $('.loading');
-        const $content = $('.content')
-
-        $images.on('click', function() {
-            $content.hide();
-            $loadingScreen.css('display', 'flex');
-            $zoomedImage.attr('src', this.src);
-            $zoomedImage.hide();
-
-            setTimeout(() => {
-                $loadingScreen.hide();
-                $zoomedImage.show().addClass('show');
-            }, 1000);
-        });
-
-        // Close the zoomed image when clicked
-        $zoomedImage.on('click', function() {
-            $zoomedImage.removeClass('show').hide();  // Hide it when clicked
-            $content.show();
+        $('.cute-textbox').on('click', function() {
+            $(this).select(); // Select the text inside the textbox
+            document.execCommand('copy'); // Copy the selected text to clipboard
+            alert("Text copied: " + $(this).val()); // Optional: Show a confirmation message
         });
     </script>
 

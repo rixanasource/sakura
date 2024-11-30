@@ -1,18 +1,52 @@
-   /* Base styling */
+@font-face {
+    font-family: 'bubble';
+    src: url('sweet.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  * {
+    font-family: 'bubble', sans-serif; /* Use your custom font globally */
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
     animation: backgroundColorChange 2s ease-in-out forwards;
     transition: background-color 2s ease-in-out;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    color: magenta;
     min-height: 100vh;
-    overflow: hidden; /* Prevent scrolling during loading */
     padding: 0;
 }
+
+/* Default logo size (for desktop) */
+.logo {
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* You can adjust this based on your design */
+  }
+
+  /* For smaller screens (mobile devices) */
+  @media screen and (max-width: 768px) {
+    .logo {
+      width: 150px; /* Resize logo for mobile */
+    }
+  }
+
+  /* For very small screens (portrait mobile or very small devices) */
+  @media screen and (max-width: 480px) {
+    .logo {
+      width: 120px; /* Further resize logo for very small devices */
+    }
+  }
+
+
 
 @keyframes backgroundColorChange {
     0% {
@@ -40,12 +74,6 @@ body {
     justify-content: center;
 }
 
-/* Logo styling */
-.loading img {
-    width: 150px;
-    height: 150px;
-    animation: zoom-in-out 1.5s infinite;
-}
 
 /* Text styling */
 .loading h1 {
@@ -54,6 +82,7 @@ body {
     font-size: 3rem;
     margin: 1rem 0;
     letter-spacing: 0.05em;
+    color: #C000C0;
 }
 
 .loading h1 span {
@@ -109,22 +138,6 @@ body {
     }
 }
 
-/* Logo fade-out with zoom */
-@keyframes fade-zoom-out {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(2);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
 /* Zoom animation for logo during loading */
 @keyframes zoom-in-out {
     0%, 100% {
@@ -133,13 +146,6 @@ body {
     50% {
         transform: scale(1.2);
     }
-}
-
-/* Main content styling (hidden initially) */
-.content {
-    display: none;
-    animation: fade-in 0.5s forwards;
-    text-align: center;
 }
 
 @keyframes fade-in {
@@ -163,7 +169,6 @@ body {
     }
 
     body {
-        padding: 10px;
         justify-content: flex-start;
     }
 
@@ -190,7 +195,7 @@ body {
 
 /* Anime-style loading bar */
 .loading-bar {
-    width: 100%;
+    width: 30%;
     height: 10px;
     background-color: #f1f1f1;
     border-radius: 5px;
@@ -219,32 +224,6 @@ body {
     }
 }
 
-/* Full-screen zoom effect for images */
-.zoomed-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
-    z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: none;
-    transition: transform 0.5s ease-in-out;
-}
-
-.zoomed-image.show {
-    display: block;
-    transform: scale(1.2);
-}
-
-/* Main content styling (hidden initially) */
-.content {
-    display: none;
-    animation: fade-in 0.5s forwards;
-    text-align: center;
-    padding: 20px;
-}
 
 @keyframes fade-in {
     from {
@@ -267,7 +246,6 @@ body {
     }
 
     body {
-        padding: 10px;
         justify-content: flex-start;
     }
 
@@ -279,81 +257,6 @@ body {
         font-size: 1rem; /* Adjusted font size */
         padding: 0 10px; /* Added padding for better readability */
     }
-
-    .image-gallery {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .gallery-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-}
-
-/* Responsive adjustments for very small phone size */
-@media (max-width: 480px) {
-    .loading h1 {
-        font-size: 1.8rem; /* Smaller font size for very small phones */
-    }
-
-    .loading img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .content h1 {
-        font-size: 1.5rem; /* Even smaller */
-    }
-
-    .content p {
-        font-size: 0.9rem; /* Smaller text for very small screens */
-    }
-
-    .image-gallery {
-        grid-template-columns: 1fr; /* Stack images vertically */
-    }
-
-    .gallery-image {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-    }
-}
-
-.social-link {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    background-color: #ff7eb9; /* Cute pink background */
-    padding: 10px 20px;
-    border-radius: 25px; /* Rounded corners */
-    margin: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    display: inline-block; /* Ensure links do not take up full width */
-    white-space: nowrap; /* Prevent text from wrapping */
-}
-
-.social-link:hover {
-    background-color: #d63c8a; /* Darker pink on hover */
-    transform: scale(1.1); /* Slight zoom effect */
-}
-
-.social-link:active {
-    transform: scale(1); /* Reset scale when clicked */
-}
-
-.social-link:visited {
-    color: #f7f7f7; /* Keep visited links with a light color */
-}
-
-.social-link + .social-link {
-    margin-left: 10px; /* Space between links */
 }
 
 /* Media query for mobile devices */
@@ -375,3 +278,183 @@ body {
         text-align: center; /* Center align the text and links */
     }
 }
+
+
+.header-bar {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ffdde1, #ffc4d6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 0;
+    z-index: 1000; /* Ensures it stays above other content */
+    color:#C000C0;
+  }
+
+/* Transparent background when scrolling */
+.header-bar.transparent {
+    background: transparent;
+    box-shadow: none; /* Removes the shadow when transparent */
+}
+
+  a, a:hover {
+    color:#C000C0;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .icon i {
+    display: inline-block;
+  }
+
+  .content {
+    display: none;
+    flex-direction: column;
+    height: auto;
+    animation: fade-in 0.5s forwards; /* Fade-in effect */
+  }
+
+  .content h1 {
+    margin-bottom: 5vh;
+  }
+
+  .background-1 {
+    text-align: center;
+    background-image: url('gif1.gif');
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    background-size: cover; /* Makes the image cover the element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+
+  .background-2 {
+    padding-top: 3%;
+    text-align: center;
+    background-image: url('gif2.gif');
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh;
+    background-size: cover; /* Makes the image cover the element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+
+
+
+  /* Adding transparent background */
+  .container {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    padding: 1%; /* Optional padding to give space around the text */
+    border-radius: 8px; /* Optional rounded corners */
+
+}
+
+.container p {
+    color: #333; /* Text color */
+}
+
+.container {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10vh;
+}
+
+    p {
+    color: #352e35;
+    font-size: 30px;
+    }
+
+.container-cute {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+/* Cute textbox styling */
+.cute-textbox {
+    padding: 1vh;
+    font-size: 18px;
+    border: 2px solid #ff85b4;
+    border-radius: 12px;
+    background-color: #ffdde1;
+    color: #C000C0;
+    outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Make the textbox responsive */
+    max-width: 350px; /* Max width for larger screens */
+    margin-bottom: 10px;
+}
+
+/* Hover effect - zoom in and add shadow */
+.cute-textbox:hover {
+    transform: scale(1.1); /* Zoom in on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+/* On focus (when clicked) - animate text color and background */
+.cute-textbox:focus {
+    background-color: #fff;
+    color: #ff85b4;
+    border-color: #ff85b4;
+}
+
+/* Mobile and tablet styling (for screens 768px and below) */
+@media (max-width: 768px) {
+    .cute-textbox {
+        font-size: 16px; /* Slightly smaller font for mobile */
+        padding: 12px; /* Adjust padding */
+    }
+
+    p {
+        font-size: 15px;
+        }
+}
+
+/* Very small screens (e.g., portrait phones) */
+@media (max-width: 480px) {
+    .cute-textbox {
+        font-size: 14px; /* Smaller font for very small screens */
+        padding: 10px; /* Adjust padding */
+    }
+
+    p {
+        font-size: 15px;
+        }
+}
+
+.container-cute {
+    flex-grow: 1;  /* Allows the content to take up remaining space */
+}
+
+  /* Footer styling */
+footer {
+    margin-top: auto;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #3c3c3c;
+}
+
+footer a {
+    text-decoration: none;
+    color: #3c3c3c;
+    font-weight: bold;
+}
+
