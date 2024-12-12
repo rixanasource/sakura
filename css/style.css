@@ -25,9 +25,9 @@
 
 body {
     margin: 0;
-    animation: backgroundColorChange 2s ease-in-out forwards;
-    transition: background-color 2s ease-in-out;
-    color: magenta;
+    animation: backgroundColorChange 4s ease-in-out forwards;
+    transition: background-color 4s ease-in-out;
+    color:#f39dc1;
     min-height: 100vh;
     padding: 0;
 }
@@ -112,10 +112,10 @@ body {
 
 @keyframes backgroundColorChange {
     0% {
-        background-color: pink;
+        background-color:#ffdde1;
     }
     100% {
-        background-color: #d8a7c0; /* Lilac color */
+        background-color: #eca5ec;
     }
 }
 
@@ -342,8 +342,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background: linear-gradient(90deg, #ffdde1, #ffc4d6);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #eebcd1;
+    box-shadow: 0 4px 20px #885469;
+    border-top: 5px solid  #f39dc1;
+    border-bottom: 5px solid   #f39dc1;
+    border-radius: 12px;
     top: 0;
     z-index: 1000; /* Ensures it stays above other content */
     color:#C000C0;
@@ -519,3 +522,72 @@ footer a {
     font-weight: bold;
 }
 
+.neon-text span {
+    display: inline-block;
+    font-size: 1em;
+    color: #f1b8ef;
+    text-shadow: 0 0 10px #b12b89, 0 0 20px #e40b91;
+    animation: dance 1s infinite;
+}
+
+@keyframes dance {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(10px, -10px) rotate(15deg);
+    }
+    50% {
+        transform: translate(-10px, 10px) rotate(-15deg);
+    }
+    75% {
+        transform: translate(5px, -5px) rotate(10deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+  .icon:hover {
+    animation: dance 0.5s infinite ease-in-out;
+    color: #634a56; /* Change color on hover */
+  }
+
+  /* Keyframes for dancing motion */
+  @keyframes dance {
+    0%, 100% {
+      transform: rotate(0) translateY(0); /* No movement */
+    }
+    25% {
+      transform: rotate(-15deg) translateY(-5px); /* Tilt left and up */
+    }
+    50% {
+      transform: rotate(15deg) translateY(5px); /* Tilt right and down */
+    }
+    75% {
+      transform: rotate(-10deg) translateY(0); /* Slight tilt left */
+    }
+  }
+
+ 
+
+  /* Hover effect */
+  .cuteAnimate {
+    animation: cuteAnimation 3s infinite ease-in-out; 
+  }
+
+  /* Keyframes for the cute animation */
+  @keyframes cuteAnimation {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(5deg);
+    }
+    75% {
+      transform: scale(1.1) rotate(-2deg);
+    }
+  }

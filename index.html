@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura</title>
+    <link rel="icon" href="css/sakura-logo.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
 </head>
+
 <body>
     <!-- header -->
     <header class="header-bar">
         <div class="icon">
-            <a href="" target="_blank">  <i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.x.com/Solana_Sakura" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
         <div class="icon">
-            <a href="https://t.me/KweenEth" target="_blank"> <i class="fa-brands fa-telegram"></i></a>
-
+            <a href="https://t.me/Solana_Sakura" target="_blank"> <i class="fa-brands fa-telegram"></i></a>
+            <!--Link telegram-->
         </div>
         <div class="icon">
             <i class="fa-solid fa-capsules"></i>
@@ -27,7 +30,7 @@
         <div class="icon">
             <i class="fa-solid fa-person-dress"></i>
         </div>
-      </header>
+    </header>
     <!-- Loading Screen -->
     <div class="loading">
         <h1>
@@ -43,9 +46,12 @@
         <div class="background-1">
 
             <div class="container">
-                <p>
-                    The sakura teaches us that even in our brief moments, there is grace, beauty, and a chance to shine.
-                 </p>
+                <p class="neon-text">
+                    <span>The</span> <span>sakura</span> <span>teaches</span> <span>us</span> <span>that</span>
+                    <span>even</span> <span>in</span> <span>our</span> <span>brief</span> <span>moments,</span>
+                    <span>there</span> <span>is</span> <span>grace,</span> <span>beauty,</span> <span>and</span>
+                    <span>a</span> <span>chance</span> <span>to</span> <span>shine.</span>
+                </p>
             </div>
 
             <img class="logo" src="css/sakura-logo.png" />
@@ -56,13 +62,24 @@
         </div>
         <div class="background-2">
             <div class="container-cute">
-                <h1>TOKENOMICS</h1>
-                    <input type="text" class="cute-textbox" value="LIQUIDITY: BURNED" readonly />
-                    <input type="text" class="cute-textbox" value="SUPPLY: 1 BILLION" readonly />
-                    <input type="text" class="cute-textbox" value="MINT & FREEZE REVOKED" readonly />
-                    <input type="text" class="cute-textbox" value="TAXES: 0% SELL/BUY" readonly />
+                <h1 class="neon-text">
+                    <span>T</span>
+                    <span>O</span>
+                    <span>K</span>
+                    <span>E</span>
+                    <span>N</span>
+                    <span>O</span>
+                    <span>M</span>
+                    <span>I</span>
+                    <span>C</span>
+                    <span>S</span>
+                </h1>
+                <input type="text" class="cute-textbox" value="LIQUIDITY: BURNED" readonly />
+                <input type="text" class="cute-textbox" value="SUPPLY: 1 BILLION" readonly />
+                <input type="text" class="cute-textbox" value="MINT & FREEZE REVOKED" readonly />
+                <input type="text" class="cute-textbox" value="TAXES: 0% SELL/BUY" readonly />
 
-            <img class="logo-anya" src="css/anya.png" />
+                <img class="logo-anya" src="css/anya.png" />
             </div>
 
             <footer>
@@ -74,7 +91,14 @@
     </div>
 
     <script>
-        $(window).on('load', function() {
+        $(window).on('load', function () {
+            const spans = document.querySelectorAll('.neon-text span');
+
+            spans.forEach((span, index) => {
+                const randomDelay = Math.random() * 2; // Random delay between 0 and 2 seconds
+                span.style.animationDelay = `${randomDelay}s`;
+            });
+
             const $loadingScreen = $('.loading');
             const $content = $('.content');
             const $header = $('.header-bar');
@@ -82,31 +106,32 @@
             const $logo = $('#logo');
 
             // Animate each letter with a delay
-            $letters.each(function(index) {
+            $letters.each(function (index) {
                 const $letter = $(this);
-                setTimeout(function() {
+                setTimeout(function () {
                     $letter.css('animation', 'fade-bounce 1.5s forwards');
                 }, index * 300); // Delay each letter's animation
             });
 
             // Fade out and zoom the logo after the text animations
-            setTimeout(function() {
+            setTimeout(function () {
                 $logo.css('animation', 'fade-zoom-out 2s forwards');
             }, $letters.length * 300 + 500);
 
             // Hide loading screen and show content after all animations
-            setTimeout(function() {
+            setTimeout(function () {
                 $loadingScreen.hide();
                 $content.show().css('display', 'flex');
                 $header.show().css('display', 'flex');
             }, $letters.length * 300 + 2500);
         });
 
-        $('.cute-textbox').on('click', function() {
+        $('.cute-textbox').on('click', function () {
             $(this).select(); // Select the text inside the textbox
             document.execCommand('copy'); // Copy the selected text to clipboard
         });
     </script>
 
 </body>
+
 </html>
